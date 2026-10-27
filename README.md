@@ -151,5 +151,7 @@ MIT
 
 ## Notes
 
-- Flisk picks free host ports. If 80 is taken it uses 8081 for HTTP, and the web app then needs `FLISK_HTTP_PORT` set the same way it was started, or the printed URLs, to reach the api.
+- First run needs only Docker, [Bun](https://bun.sh) and `bun install`. `flisk up` creates `.env` (with a fresh database password) and the generated files itself.
+- If port 80 is taken, Flisk picks another HTTP port and prints the URLs. The web app follows it.
+- The database lives in a Docker volume named after the project. If you delete a project folder and start a new one with the same name, the old volume still holds the old password and migrations fail with `P1000 Authentication failed`. Rename the project in `.flisk/project.json`, or remove the old `flisk_<name>_postgres` container and its volume.
 - The service images run compiled output (`tsc` to `dist/`), so each service has a `build` script and a `tsconfig.json` that emits.
