@@ -1,7 +1,7 @@
 import { apiBase } from './apiBase';
 
 // Flisk sets VITE_API_URL to the api's public URL (backendName in service.json).
-export const API_URL = apiBase(import.meta.env.VITE_API_URL ?? '', globalThis.location?.port ?? '');
+export const API_URL = apiBase(import.meta.env.VITE_API_URL ?? '', globalThis.location);
 
 export interface Post {
   id: number;
