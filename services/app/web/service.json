@@ -1,0 +1,12 @@
+{
+  "$schema": "https://flisk.sh/schema.service.json",
+  "schemaVersion": 1,
+  "appName": "web",
+  "appType": "frontend",
+  "framework": "vue",
+  "stack": "app",
+  "port": 3000,
+  "backendName": "api",
+  "dependsOn": ["api"],
+  "healthCheckPath": "/"
+}

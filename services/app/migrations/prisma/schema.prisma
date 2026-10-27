@@ -1,0 +1,11 @@
+// Prisma only applies the SQL in prisma/migrations (`prisma migrate deploy`).
+// Migrations are plain SQL in prisma/migrations; seeders run from src/seeders.
+// The app has no Prisma models: api and worker query Postgres with Bun's SQL client.
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}

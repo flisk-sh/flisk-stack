@@ -1,0 +1,11 @@
+{
+  "$schema": "https://flisk.sh/schema.service.json",
+  "schemaVersion": 1,
+  "appName": "api",
+  "appType": "backend",
+  "stack": "app",
+  "port": 4000,
+  "featuresEnabled": ["prisma"],
+  "dependsOn": ["migrations"],
+  "healthCheckPath": "/health"
+}

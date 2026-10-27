@@ -1,0 +1,9 @@
+{
+  "$schema": "https://flisk.sh/schema.service.json",
+  "schemaVersion": 1,
+  "appName": "migrations",
+  "appType": "migrator",
+  "stack": "app",
+  "featuresEnabled": ["prisma"],
+  "dependsOn": ["postgres"]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "flisk-stack",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "services/*/*"
+  ],
+  "scripts": {
+    "stack": "bun bin/stack.ts",
+    "dev": "flisk up app",
+    "test": "bun test",
+    "typecheck": "bun run --filter '*' typecheck"
+  },
+  "devDependencies": {
+    "@flisk-sh/flisk": "1.4.5",
+    "@types/bun": "^1.4.2"
+  }
+}

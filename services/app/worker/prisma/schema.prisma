@@ -1,0 +1,10 @@
+// Present for Flisk's prisma feature (it provides DATABASE_URL). The schema itself is owned by
+// services/app/migrations; this service queries Postgres with Bun's SQL client.
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}

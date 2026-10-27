@@ -1,0 +1,10 @@
+{
+  "$schema": "https://flisk.sh/schema.service.json",
+  "schemaVersion": 1,
+  "appName": "worker",
+  "appType": "worker",
+  "stack": "app",
+  "port": 6000,
+  "featuresEnabled": ["prisma"],
+  "dependsOn": ["migrations"]
+}
