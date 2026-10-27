@@ -4,8 +4,10 @@
 
 Add a feature by adding a file. An Action becomes an endpoint, a Job becomes a background task, a view becomes a page, and a migration folder becomes a schema change (plain SQL that `prisma migrate deploy` applies). You don't edit a route file, a queue registry or a router config. One command starts the whole thing on your laptop: Postgres, migrations, API, worker and web app.
 
+Click **Use this template** on GitHub, or from the terminal:
+
 ```bash
-git clone https://github.com/flisk-sh/flisk-stack my-app && cd my-app
+gh repo create my-app --template flisk-sh/flisk-stack --clone && cd my-app
 bun install
 bun stack dev        # = flisk up app
 ```
