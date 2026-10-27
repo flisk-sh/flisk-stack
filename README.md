@@ -4,6 +4,10 @@
 
 Add a feature by adding a file. An Action becomes an endpoint, a Job becomes a background task, a view becomes a page, and a migration folder becomes a schema change (plain SQL that `prisma migrate deploy` applies). You don't edit a route file, a queue registry or a router config. One command starts the whole thing on your laptop: Postgres, migrations, API, worker and web app.
 
+[![flisk-stack demo: create, validate, open and delete posts](docs/demo.gif)](docs/demo.mp4)
+
+_20 seconds: create two posts, an api validation error, open a post, delete two. [Full-quality video](docs/demo.mp4)._
+
 Click **Use this template** on GitHub, or from the terminal:
 
 ```bash
