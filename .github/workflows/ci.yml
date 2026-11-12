@@ -8,9 +8,36 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: flisk_stack
+          POSTGRES_PASSWORD: ci-only-password
+          POSTGRES_DB: flisk_stack_app
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U flisk_stack"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      # Makes services/app/api/tests/posts.db.test.ts run instead of skip.
+      TEST_DATABASE_URL: postgresql://flisk_stack:ci-only-password@localhost:5432/flisk_stack_app
     steps:
       - uses: actions/checkout@v7
       - uses: oven-sh/setup-bun@v2
       - run: bun install --frozen-lockfile
       - run: bun run typecheck
-      - run: bun test
+      - name: Apply the migrations
+        run: |
+          for f in services/app/migrations/prisma/migrations/*/migration.sql; do
+            echo "applying $f"
+            psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -f "$f"
+          done
+      - name: Test (the Postgres tests must run, not skip)
+        run: |
+          bun test 2>&1 | tee test.log
+          grep -q "(pass) posts against Postgres" test.log
+          ! grep -q "(skip) posts against Postgres" test.log
