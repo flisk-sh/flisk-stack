@@ -102,9 +102,9 @@ export function makeJob(rawName: string): GeneratedFile[] {
   return [
     {
       path: `${APP}/worker/src/Jobs/${name}.ts`,
-      content: `import { defineJob } from '../framework/job';
+      content: `import { defineJob } from '${depth(name)}framework/job';
 
-// Queue it from the api: await dispatch('${name}', { ... })
+// Queue it from the api: await dispatch('${last(name)}', { ... })
 export default defineJob({
   handle(payload) {
     console.log('[${name}]', payload);
